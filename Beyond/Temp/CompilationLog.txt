@@ -1,0 +1,22 @@
+# Starting compiling UnityEngine.TestRunner.dll
+/Applications/Unity/2020.3.18f1/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-1bb505ba7d12d4bbb828db77e864d50a
+# Starting compiling UnityEngine.UI.dll
+/Applications/Unity/2020.3.18f1/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-bc8f0b5e10fb141958bca6c80077ceeb
+# Starting compiling UnityEditor.TestRunner.dll
+/Applications/Unity/2020.3.18f1/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-92985ec56302c4e17899bbb9705d401e
+# Starting compiling UnityEditor.UI.dll
+/Applications/Unity/2020.3.18f1/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-0c009d91bb1374cdd84570691e5ec319
+# Starting compiling Unity.VisualStudio.Editor.dll
+/Applications/Unity/2020.3.18f1/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-4ac06654e801845d68efe19a7c00b547
+# Starting compiling Unity.Timeline.dll
+/Applications/Unity/2020.3.18f1/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-eaf1fc18065234fc099d6cef308ad7db
+# Starting compiling Unity.TextMeshPro.dll
+/Applications/Unity/2020.3.18f1/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-8be16159bc68e41e1bed06e0fdd3d127
+# Starting compiling NextMind.UnitySDK.Runtime.dll
+/Applications/Unity/2020.3.18f1/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-b60add0adf8ff42d2a514ba3d7ed8cfc
+# Starting compiling NextMind.UnitySDK.Examples.dll
+/Applications/Unity/2020.3.18f1/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-20a59c5f3455d41c1a58e17a4cc26e37
+# Starting compiling Unity.Timeline.Editor.dll
+/Applications/Unity/2020.3.18f1/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-3a1e5aad9f2e84f3386f2ffab9dad019
+# Starting compiling Unity.TextMeshPro.Editor.dll
+/Applications/Unity/2020.3.18f1/Unity.app/Contents/Tools/RoslynScripts/unity_csc.sh /noconfig @Temp/UnityTempFile-0b13185498c784daa839e0d026b56155
