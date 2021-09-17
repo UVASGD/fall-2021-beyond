@@ -19,9 +19,22 @@ public class PlayerController : MonoBehaviour
         Vector3 leftRight = Vector3.right * Input.GetAxis("Horizontal");
         Vector3 input = speed * Time.deltaTime * (frontBackInput + leftRight);
         transform.Translate(input);
-        //rb.AddForce(input, ForceMode.Force);
+        //rb.AddForce(input, ForceMode.VelocityChange);
 
         if (canJump && Input.GetKeyDown(KeyCode.Space))
-            rb.AddForce(10 * Vector3.up, ForceMode.Impulse);
+        {
+            rb.AddForce(speed * Vector3.up, ForceMode.Impulse);
+            canJump = false;
+        }
+
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Ground"))
+        {
+            canJump = true;
+            Debug.Log("Touching ground");
+        }
     }
 }
