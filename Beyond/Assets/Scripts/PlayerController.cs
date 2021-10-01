@@ -34,7 +34,16 @@ public class PlayerController : MonoBehaviour
         if (collision.collider.CompareTag("Ground"))
         {
             canJump = true;
-            Debug.Log("Touching ground");
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        OverlayController.SetTextBoxActive(other.name, true);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        OverlayController.SetTextBoxActive(other.name, false);
     }
 }
