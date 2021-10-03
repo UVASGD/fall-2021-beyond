@@ -4,12 +4,12 @@ public class RespawnPlayer : MonoBehaviour
 {
     [SerializeField] private GameObject spawnPoint;
     [SerializeField] private GameObject respawnMessage;
-    private Vector3 spawnPos;
-    private bool waiting; // Wait till the playe pressed a button to respawn
+    private Vector3 currentSpawnPos;
+    private bool waiting; // Wait till players presses button to respawn
 
     void Start()
     {
-        spawnPos = spawnPoint.transform.position;
+        currentSpawnPos = spawnPoint.transform.position;
         respawnMessage.SetActive(false);
         waiting = false;
     }
@@ -27,10 +27,18 @@ public class RespawnPlayer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!waiting && other.CompareTag("Respawn")) {
-            waiting = true;
-            respawnMessage.SetActive(true);
-            gameObject.GetComponent<PlayerController>().enabled = false; // disable player movement
+        if (other.CompareTag("Respawn"))
+        {
+            Checkpoint checkpoint = other.GetComponent<Checkpoint>();
+            currentSpawnPos = checkpoint.GetSpawnPos();
+            // Wait to respawn if crossing finish line
+            if (!waiting && checkpoint.IsFinishLine())
+            {
+                waiting = true;
+                respawnMessage.SetActive(true);
+                currentSpawnPos = spawnPoint.transform.position; // set spawn point back to start
+                //gameObject.GetComponent<PlayerController>().enabled = false; // disable player movement
+            }
         }
     }
 
@@ -38,7 +46,7 @@ public class RespawnPlayer : MonoBehaviour
     {
         waiting = false;
         respawnMessage.SetActive(false);
-        transform.position = spawnPos;
-        gameObject.GetComponent<PlayerController>().enabled = true;
+        transform.position = currentSpawnPos;
+        //gameObject.GetComponent<PlayerController>().enabled = true;
     }
 }
