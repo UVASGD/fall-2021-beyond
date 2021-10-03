@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637685682850000000
+      ticks: 637688913370000000
     m_Hash: 2775518674
   m_LockFileStatus:
     m_FilePath: /Users/ericweng/Documents/Unity/Beyond/Beyond/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637685682850000000
+      ticks: 637688913370000000
     m_Hash: 930328990
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
@@ -2442,4 +2442,4 @@ m_PackageAssets:
   m_LocalPackages:
     m_LocalFileStatus: []
 m_ProjectPath: /Users/ericweng/Documents/Unity/Beyond/Beyond/Packages
-m_EditorVersion: 2020.3.18f1 (a7d1c678663c)
+m_EditorVersion: 2020.3.19f1 (68f137dc9bbe)
