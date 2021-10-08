@@ -5,7 +5,7 @@ using UnityEngine;
  */
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float speed = 10;
+    [SerializeField] private float speed = 15;
     private bool canJump = true;
     private Rigidbody rb;
 
