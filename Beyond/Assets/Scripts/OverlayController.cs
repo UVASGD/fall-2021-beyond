@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+/**
+ * By Eric Weng
+ */
 public class OverlayController : MonoBehaviour
 {
     private static OverlayController INSTANCE = null;

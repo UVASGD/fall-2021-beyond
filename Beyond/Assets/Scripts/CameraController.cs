@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/**
+ * By Eric Weng
+ */
 public class CameraController : MonoBehaviour
 {
     [SerializeField] GameObject target;
