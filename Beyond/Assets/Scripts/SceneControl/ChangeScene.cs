@@ -18,6 +18,7 @@ public class ChangeScene : MonoBehaviour
     {
         if (transition != null)
         {
+            Debug.Log("Transitioning");
             transition.SetTrigger("GameOver");
             yield return new WaitForSeconds(2);
         }

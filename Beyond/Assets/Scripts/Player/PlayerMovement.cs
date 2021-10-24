@@ -42,14 +42,15 @@ public class PlayerMovement : MonoBehaviour
     private bool slideCooldown = false;
     private bool isSliding = false;
 
-    void Start()
+    private void Start()
     {
-        railIndex = rails.Count / 2; // select the middle rail
         rb = GetComponent<Rigidbody>();
+
+        railIndex = rails.Count / 2; // select the middle rail
         currSpeed = runSpeed;
     }
 
-    void Update()
+    private void Update()
     {
         /* Jump */
 
@@ -73,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
         //Sets initial jump force
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            Debug.Log("jump");
             jumpKeyHeld = true;
             if (isGrounded && isFalling && !isSliding)
             {
@@ -143,12 +145,13 @@ public class PlayerMovement : MonoBehaviour
         // Then sets next point to go to
         if (Vector3.Distance(pos, nextPoint) < 1f)
         {
-            //// Teleport to the beginning
-            //if (++waypointIndex >= rails[railIndex].childCount)
-            //{
-            //    waypointIndex = 0;
-            //    transform.position = rails[railIndex].GetChild(waypointIndex).position;
-            //}
+            // Teleport to the beginning
+            if (++waypointIndex >= rails[railIndex].childCount)
+            {
+                Debug.Log("Reached the end");
+                //waypointIndex = 0;
+                //transform.position = rails[railIndex].GetChild(waypointIndex).position;
+            }
             Debug.Log("Waypoint: " + waypointIndex);
         }
 
@@ -196,7 +199,7 @@ public class PlayerMovement : MonoBehaviour
                 StartCoroutine(dashWait());
                 StartCoroutine(dash(transform.position + Quaternion.FromToRotation(new Vector3(0, 0, 1), dashDirection) * new Vector3(-5, 0, -2)));
             }
-            Debug.Log(railIndex);
+            Debug.Log("Rail: " + railIndex);
         }
     }
 

@@ -10,11 +10,11 @@ public class UIController : MonoBehaviour
 {
     // TODO hide title text and menu button during gameplay
     [SerializeField] private GameObject menuButton;
-    [SerializeField] private Text gameText;
+    [SerializeField] private Text startMessage;
+    [SerializeField] private Text titleText;
     [SerializeField] private Slider timerSlider;
     [SerializeField] private Text timerText;
     [SerializeField] private Text timesUpText;
-    [SerializeField] private Animator outOfTimeAnimator;
 
     [SerializeField] private float gameDuration; // how long to run timer
     private float timerValue;
@@ -24,6 +24,13 @@ public class UIController : MonoBehaviour
 
     private void Start()
     {
+        // Set UI visibility
+        startMessage.enabled = false;
+        timesUpText.enabled = false;
+        titleText.enabled = true;
+
+        // Initialize timer
+        timerSlider.enabled = false;
         timerSlider.maxValue = gameDuration;
         timerSlider.value = gameDuration;
         timerValue = gameDuration;
@@ -33,9 +40,6 @@ public class UIController : MonoBehaviour
     {
         if (timerStarted)
         {
-            menuButton.SetActive(false);
-            gameText.text = "";
-
             timerValue -= Time.deltaTime;
 
             int minutes = Mathf.FloorToInt(timerValue / 60);
@@ -43,38 +47,31 @@ public class UIController : MonoBehaviour
 
             string textTime = string.Format("{0:0}:{1:00}", minutes, seconds);
 
+            timerText.text = textTime;
+            timerSlider.value = timerValue;
+
             if (timerValue <= 0)
             {
                 timerStopped = true;
-                timesUpText.text = "Time's Up!";
-                LoadScene("MenuScene");
-            }
-
-            if (!timerStopped)
-            {
-                timerText.text = textTime;
-                timerSlider.value = timerValue;
+                timesUpText.enabled = true;
+                timesUpText.enabled = true;
+                GetComponent<ChangeScene>().LoadScene("MenuScene");
             }
         }
     }
 
-    public void LoadScene(string sceneName)
+    public void StartGame()
     {
-        StartCoroutine(wait(sceneName));
-    }
-
-    IEnumerator wait(string sceneName){
-        outOfTimeAnimator.SetTrigger("GameOver");
-        yield return new WaitForSeconds(1);
-        SceneManager.LoadScene(sceneName);
-    }
-
-    public void startTimer()
-    {
+        // Start counting down
         timerStarted = true;
+
+        // Set UI visibility
+        titleText.enabled = false;
+        timerSlider.enabled = true;
+        menuButton.SetActive(false);
     }
 
-    public bool isTimerStopped()
+    public bool IsGameOver()
     {
         return timerStopped;
     }

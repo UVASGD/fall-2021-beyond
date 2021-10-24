@@ -1,44 +1,51 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 /**
  * By Eric Weng
  */
 public class SceneController : MonoBehaviour
 {
+    [SerializeField] private PlayerMovement playerScript; 
+    private UIController uiTimer;
     private SceneState state;
-    private UIController timer; // the timer script
 
     private void Start()
     {
         state = SceneState.LOADING;
-        timer = GetComponent<UIController>();
+        uiTimer = GetComponent<UIController>();
+        //playerScript.enabled = false;
     }
 
     private void Update()
     {
-        // Press space to start
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GetComponent<ChangeScene>().LoadScene("MenuScene"); // exit to menu
+        }
+
+        
         switch (state)
         {
             case SceneState.LOADING:
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space)) // Press space to start
                 {
                     state = SceneState.RUNNING;
-                    //timer.startTimer();
+                    //playerScript.enabled = true; // somehow jump breaks with this
+                    uiTimer.StartGame();
                 }
                 break;
+
             case SceneState.RUNNING:
-                if (timer.isTimerStopped())
+                if (uiTimer.IsGameOver()) // End Game
                 {
-                    //state = SceneState.GAMEOVER;
+                    state = SceneState.GAMEOVER;
+                    //playerScript.enabled = false;
                 }
                 // TODO detect player victory
                 break;
+
             case SceneState.GAMEOVER:
                 break;
-        }
-        if (Input.GetKeyDown(KeyCode.Escape)){
-            SceneManager.LoadScene("MenuScene");
         }
     }
 
