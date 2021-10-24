@@ -621,10 +621,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 757780128}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66a3a00a031c76443861f2ae7d9da4fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 625c636434d8b4c5494aa5c77aa471f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transition: {fileID: 8479751533153722948}
+  transition: {fileID: 0}
 --- !u!1 &794391480
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,7 +760,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 833074139}
-  - component: {fileID: 833074138}
   - component: {fileID: 833074140}
   - component: {fileID: 833074141}
   m_Layer: 0
@@ -770,19 +769,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &833074138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 833074137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66a3a00a031c76443861f2ae7d9da4fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transition: {fileID: 8479751533153722948}
 --- !u!4 &833074139
 Transform:
   m_ObjectHideFlags: 0
@@ -818,9 +804,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 833074137}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed0b6cbdcb61b48f3a3d2895043dc795, type: 3}
+  m_Script: {fileID: 11500000, guid: 3297933d78b224907998817357adf864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuButton: {fileID: 757780128}
+  gameText: {fileID: 1493732763}
   timerSlider: {fileID: 2006524925}
   timerText: {fileID: 687179258}
   timesUpText: {fileID: 1287448718}
@@ -1727,6 +1715,17 @@ Transform:
   m_Father: {fileID: 901633147}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1493732763 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8479751533051036067, guid: 25e2cb85ca3e54e528ea45183bc1d2ce, type: 3}
+  m_PrefabInstance: {fileID: 8479751533153722947}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1510810995
 GameObject:
   m_ObjectHideFlags: 0
@@ -2000,7 +1999,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11500000, guid: ed0b6cbdcb61b48f3a3d2895043dc795, type: 3}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: 
         m_Mode: 1
@@ -2060,10 +2059,26 @@ PrefabInstance:
     - target: {fileID: 8479751531313078156, guid: 25e2cb85ca3e54e528ea45183bc1d2ce, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 833074138}
+      objectReference: {fileID: 757780129}
     - target: {fileID: 8479751531313078156, guid: 25e2cb85ca3e54e528ea45183bc1d2ce, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479751531313078157, guid: 25e2cb85ca3e54e528ea45183bc1d2ce, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 350
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479751531313078157, guid: 25e2cb85ca3e54e528ea45183bc1d2ce, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479751531313078157, guid: 25e2cb85ca3e54e528ea45183bc1d2ce, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 770
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479751531313078157, guid: 25e2cb85ca3e54e528ea45183bc1d2ce, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 475
       objectReference: {fileID: 0}
     - target: {fileID: 8479751531313078158, guid: 25e2cb85ca3e54e528ea45183bc1d2ce, type: 3}
       propertyPath: m_Name

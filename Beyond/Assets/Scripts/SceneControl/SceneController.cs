@@ -1,24 +1,18 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /**
  * By Eric Weng
  */
 public class SceneController : MonoBehaviour
 {
-    public enum SceneState
-    {
-        LOADING,
-        RUNNING,
-        GAMEOVER
-    }
-
     private SceneState state;
-    private Timer timer; // the timer script
+    private UIController timer; // the timer script
 
     private void Start()
     {
         state = SceneState.LOADING;
-        timer = GetComponent<Timer>();
+        timer = GetComponent<UIController>();
     }
 
     private void Update()
@@ -30,18 +24,21 @@ public class SceneController : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     state = SceneState.RUNNING;
-                    timer.startTimer();
+                    //timer.startTimer();
                 }
                 break;
             case SceneState.RUNNING:
                 if (timer.isTimerStopped())
                 {
-                    state = SceneState.GAMEOVER;
+                    //state = SceneState.GAMEOVER;
                 }
                 // TODO detect player victory
                 break;
             case SceneState.GAMEOVER:
                 break;
+        }
+        if (Input.GetKeyDown(KeyCode.Escape)){
+            SceneManager.LoadScene("MenuScene");
         }
     }
 

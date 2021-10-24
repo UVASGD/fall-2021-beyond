@@ -139,13 +139,17 @@ public class PlayerMovement : MonoBehaviour
             transform.position = Vector3.MoveTowards(pos, nextPoint, step);
         }
 
-
         // Check if the position of the cube and sphere are approximately equal.
         // Then sets next point to go to
         if (Vector3.Distance(pos, nextPoint) < 1f)
         {
-            if (++waypointIndex >= rails[railIndex].childCount)
-                waypointIndex--;
+            //// Teleport to the beginning
+            //if (++waypointIndex >= rails[railIndex].childCount)
+            //{
+            //    waypointIndex = 0;
+            //    transform.position = rails[railIndex].GetChild(waypointIndex).position;
+            //}
+            Debug.Log("Waypoint: " + waypointIndex);
         }
 
         /* Slide */
@@ -166,10 +170,8 @@ public class PlayerMovement : MonoBehaviour
 
         /* Dash */
 
-        
-        //Debug.Log(waypointIndex);
-
         //Dashes LEFT or RIGHT to change rails
+        // TODO don't dash while jumping
         if (Input.GetKeyDown(KeyCode.A) && !isDashing)
         {
             if (--railIndex < 0) // we are already at left edge
@@ -181,7 +183,7 @@ public class PlayerMovement : MonoBehaviour
                 StartCoroutine(dashWait());
                 StartCoroutine(dash(transform.position + Quaternion.FromToRotation(new Vector3(0, 0, 1), dashDirection) * new Vector3(5, 0, -2)));
             }
-            Debug.Log(railIndex);
+            Debug.Log("Rail: " + railIndex);
         }
         else if (Input.GetKeyDown(KeyCode.D) && !isDashing)
         {

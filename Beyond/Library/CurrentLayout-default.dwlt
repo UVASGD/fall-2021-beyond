@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1440
     height: 847
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Scene
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_MinSize: {x: 678, y: 492}
   m_MaxSize: {x: 14001, y: 14042}
   vertical: 0
-  controlID: 109
+  controlID: 16
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 110
+  controlID: 17
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 111
+  controlID: 18
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -412,9 +412,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0, y: 1, z: -34.25}
+    m_Target: {x: 9.049262, y: 17.6643, z: -59.404682}
     speed: 2
-    m_Value: {x: 0, y: 1, z: -34.25}
+    m_Value: {x: 9.049262, y: 17.6643, z: -59.404682}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -461,13 +461,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.29124, y: 0.041593548, z: -0.012676158, w: 0.95566726}
+    m_Target: {x: -0.24355416, y: -0.04595471, z: 0.011557688, w: -0.9687378}
     speed: 2
-    m_Value: {x: 0.29123837, y: 0.041593313, z: -0.012676087, w: 0.9556619}
+    m_Value: {x: -0.2435521, y: -0.045954324, z: 0.01155759, w: -0.96872956}
   m_Size:
-    m_Target: 32.78052
+    m_Target: 0.8660254
     speed: 2
-    m_Value: 32.78052
+    m_Value: 0.8660254
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -520,9 +520,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: d07bffff2e7cffff447cffff847cffff987cffffae7cffffe684ffff2285ffff988effff2c90ffff6c90ffff3692ffffaec0ffff40c1ffff18c4ffff44f4ffff46f4ffff6ef5ffff96f9ffff9efaffff54fbffff643c0000723c0000e0420000f6420000044300006a52000096520000a0540000745500008e5500009c550000a05500001868000022710000
+      m_SelectedIDs: d8820000
+      m_LastClickedID: 33496
+      m_ExpandedIDs: 8a87ffff8a88ffff709fffff98d1ffff9ad1ffffb0d1ffff32dcffff44dcffffb4dcffff36e2ffff08f7ffffe8f7ffffccf8ffff9afaffff54fbffffea3a0000f03a00000c3b00007a3f0000ee3f000006530000e2540000ee5400008c5b0000e05b0000ce82000002830000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -538,7 +538,7 @@ MonoBehaviour:
         m_IsRenaming: 0
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 8}
+        m_ClientGUIView: {fileID: 0}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -698,36 +698,36 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts/GUI
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: /Users/ericweng/Documents/Unity/fall-2021-beyond/Beyond
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 863a0000
-    m_LastClickedID: 14982
-    m_ExpandedIDs: 000000006c3a00006e3a0000703a0000723a0000743a0000763a0000863a000000ca9a3b
+    scrollPos: {x: 0, y: 2}
+    m_SelectedIDs: 723a0000
+    m_LastClickedID: 14962
+    m_ExpandedIDs: 000000005c3a00005e3a0000603a0000623a0000643a0000743a000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Scenes
+      m_OriginalName: Scenes
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 14962
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 10}
     m_SearchString: 
@@ -741,7 +741,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000006c3a00006e3a0000703a0000723a0000743a0000763a0000
+    m_ExpandedIDs: 000000005c3a00005e3a0000603a0000623a0000643a0000663a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -768,7 +768,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000d23a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
