@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
- * By AJ Nye and Eric Weng
+ * Coding by AJ Nye and Eric Weng
+ * Animations by Matthew and Dyland
  * TODO separate into player manager and sub scripts
  */
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody rb;
+    private Animator anim;
 
     // Waypoint Fields
     /*
@@ -42,16 +44,24 @@ public class PlayerMovement : MonoBehaviour
     private bool slideCooldown = false;
     private bool isSliding = false;
 
-    private void Start()
+    void Start()
     {
-        rb = GetComponent<Rigidbody>();
-
+        anim = GetComponent<Animator>();
         railIndex = rails.Count / 2; // select the middle rail
+        rb = GetComponent<Rigidbody>();
         currSpeed = runSpeed;
     }
 
-    private void Update()
+    void Update()
     {
+        /* Falling to Death */
+
+        if (isFalling && GetComponent<Transform>().position.y < -2f)
+        {
+            anim.SetBool("isFalling", true);
+        }
+
+
         /* Jump */
 
         //Sets grounded if close enough to ground
@@ -74,7 +84,6 @@ public class PlayerMovement : MonoBehaviour
         //Sets initial jump force
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("jump");
             jumpKeyHeld = true;
             if (isGrounded && isFalling && !isSliding)
             {
@@ -84,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
                 Vector3 vel = rb.velocity;
                 vel.y = 0;
                 rb.velocity = vel;
-
+                anim.SetTrigger("jump");
                 rb.AddForce(transform.up * jumpVel, ForceMode.Impulse);
             }
         }
@@ -95,8 +104,9 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Adds counter jump force to make a "smaller" jump when space not held
-        if(!isGrounded && !jumpKeyHeld)
+        if (!isGrounded && !jumpKeyHeld)
         {
+            anim.SetTrigger("jump");
             rb.AddForce(counterJumpForce * transform.up * rb.mass);
         }
 
@@ -104,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
 
         //Chooses the rail to go towards as nextPoint
         Vector3 nextPoint = rails[railIndex].GetChild(waypointIndex).position;
-                
+
         //Sets y the same as transform as y does not matter
         nextPoint.y = transform.position.y;
         Vector3 pos = transform.position;
@@ -141,6 +151,7 @@ public class PlayerMovement : MonoBehaviour
             transform.position = Vector3.MoveTowards(pos, nextPoint, step);
         }
 
+
         // Check if the position of the cube and sphere are approximately equal.
         // Then sets next point to go to
         if (Vector3.Distance(pos, nextPoint) < 1f)
@@ -148,7 +159,9 @@ public class PlayerMovement : MonoBehaviour
             // Teleport to the beginning
             if (++waypointIndex >= rails[railIndex].childCount)
             {
+                waypointIndex--;
                 Debug.Log("Reached the end");
+                SceneController.EndGame(); // should end game when crossing finish line
                 //waypointIndex = 0;
                 //transform.position = rails[railIndex].GetChild(waypointIndex).position;
             }
@@ -173,13 +186,15 @@ public class PlayerMovement : MonoBehaviour
 
         /* Dash */
 
+
+        //Debug.Log(waypointIndex);
+
         //Dashes LEFT or RIGHT to change rails
-        // TODO don't dash while jumping
         if (Input.GetKeyDown(KeyCode.A) && !isDashing)
         {
             if (--railIndex < 0) // we are already at left edge
             {
-                railIndex = 0;                
+                railIndex = 0;
             }
             else
             {
@@ -192,7 +207,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (++railIndex >= rails.Count) // we are already at right edge
             {
-                railIndex = rails.Count - 1;                
+                railIndex = rails.Count - 1;
             }
             else
             {
@@ -230,6 +245,11 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator slide()
     {
         isSliding = true;
+        int random = Random.Range(0, 10);
+        if (random >= 8)
+            anim.SetTrigger("isRolling");
+        else
+            anim.SetTrigger("isSliding");
         slideCooldown = true;
         for (int x = 10; x > 0; x--)
         {
