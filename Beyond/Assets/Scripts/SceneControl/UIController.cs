@@ -9,13 +9,13 @@ public class UIController : MonoBehaviour
 {
     // TODO hide title text and menu button during gameplay
     [SerializeField] private GameObject menuButton;
-    [SerializeField] private Text startMessage;
+    //[SerializeField] private Text startMessage; // TODO not implemented
     [SerializeField] private Text titleText;
     [SerializeField] private Slider timerSlider;
     [SerializeField] private Text timerText;
     [SerializeField] private Text timesUpText;
 
-    [SerializeField] private float gameDuration; // how long to run timer
+    [SerializeField] private float timerDuration; // how long to run timer
     private float timerValue;
 
     private bool timerStarted = false; // is timer counting
@@ -24,15 +24,15 @@ public class UIController : MonoBehaviour
     private void Start()
     {
         // Set UI visibility
-        startMessage.enabled = false;
+        //startMessage.enabled = false;
         timesUpText.enabled = false;
         titleText.enabled = true;
 
         // Initialize timer
         timerSlider.enabled = false;
-        timerSlider.maxValue = gameDuration;
-        timerSlider.value = gameDuration;
-        timerValue = gameDuration;
+        timerSlider.maxValue = timerDuration;
+        timerSlider.value = timerDuration;
+        timerValue = timerDuration;
     }
 
     private void Update()

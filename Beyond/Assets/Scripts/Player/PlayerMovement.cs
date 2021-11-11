@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
- * Coding by AJ Nye and Eric Weng
- * Animations by Matthew and Dyland
+ * By AJ Nye and Eric Weng
  * TODO separate into player manager and sub scripts
  */
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody rb;
-    private Animator anim;
 
     // Waypoint Fields
     /*
@@ -22,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private int waypointIndex = 0; // Which point along the rail we are pathing to
 
     // Movement Parameters
-    [SerializeField] private float dashTime = 0.15f; // issue: dash seems slow
+    [SerializeField] private float dashTime = 0.05f; // issue: dash seems slow
     [SerializeField] private float runSpeed = 10.0f;
     [SerializeField] private float slowSpeed = 5f;
     [SerializeField] private float slideSpeedInc = 20f;
@@ -46,7 +44,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        anim = GetComponent<Animator>();
         railIndex = rails.Count / 2; // select the middle rail
         rb = GetComponent<Rigidbody>();
         currSpeed = runSpeed;
@@ -54,14 +51,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        /* Falling to Death */
-
-        if (isFalling && GetComponent<Transform>().position.y < -2f)
-        {
-            anim.SetBool("isFalling", true);
-        }
-
-
         /* Jump */
 
         //Sets grounded if close enough to ground
@@ -93,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
                 Vector3 vel = rb.velocity;
                 vel.y = 0;
                 rb.velocity = vel;
-                anim.SetTrigger("jump");
+
                 rb.AddForce(transform.up * jumpVel, ForceMode.Impulse);
             }
         }
@@ -104,9 +93,8 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Adds counter jump force to make a "smaller" jump when space not held
-        if (!isGrounded && !jumpKeyHeld)
+        if(!isGrounded && !jumpKeyHeld)
         {
-            anim.SetTrigger("jump");
             rb.AddForce(counterJumpForce * transform.up * rb.mass);
         }
 
@@ -114,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
 
         //Chooses the rail to go towards as nextPoint
         Vector3 nextPoint = rails[railIndex].GetChild(waypointIndex).position;
-
+                
         //Sets y the same as transform as y does not matter
         nextPoint.y = transform.position.y;
         Vector3 pos = transform.position;
@@ -156,16 +144,8 @@ public class PlayerMovement : MonoBehaviour
         // Then sets next point to go to
         if (Vector3.Distance(pos, nextPoint) < 1f)
         {
-            // Teleport to the beginning
             if (++waypointIndex >= rails[railIndex].childCount)
-            {
                 waypointIndex--;
-                Debug.Log("Reached the end");
-                SceneController.EndGame(); // should end game when crossing finish line
-                //waypointIndex = 0;
-                //transform.position = rails[railIndex].GetChild(waypointIndex).position;
-            }
-            Debug.Log("Waypoint: " + waypointIndex);
         }
 
         /* Slide */
@@ -186,35 +166,39 @@ public class PlayerMovement : MonoBehaviour
 
         /* Dash */
 
-
+        
         //Debug.Log(waypointIndex);
 
         //Dashes LEFT or RIGHT to change rails
-        if (Input.GetKeyDown(KeyCode.A) && !isDashing)
+        if (Input.GetKeyDown(KeyCode.A) && !isDashing && !isSliding && isGrounded)
         {
             if (--railIndex < 0) // we are already at left edge
             {
-                railIndex = 0;
+                railIndex = 0;                
             }
             else
             {
                 StartCoroutine(dashWait());
-                StartCoroutine(dash(transform.position + Quaternion.FromToRotation(new Vector3(0, 0, 1), dashDirection) * new Vector3(5, 0, -2)));
+                //StartCoroutine(dash(transform.position + Quaternion.FromToRotation(new Vector3(0, 0, 1), dashDirection) * new Vector3(5, 0, -2)));
+                StartCoroutine(dash(transform.position + Quaternion.FromToRotation(new Vector3(0, 0, 1), dashDirection) * new Vector3(5, 0, 0)));
+
             }
-            Debug.Log("Rail: " + railIndex);
+            Debug.Log(railIndex);
         }
-        else if (Input.GetKeyDown(KeyCode.D) && !isDashing)
+        else if (Input.GetKeyDown(KeyCode.D) && !isDashing && !isSliding && isGrounded)
         {
             if (++railIndex >= rails.Count) // we are already at right edge
             {
-                railIndex = rails.Count - 1;
+                railIndex = rails.Count - 1;                
             }
             else
             {
                 StartCoroutine(dashWait());
-                StartCoroutine(dash(transform.position + Quaternion.FromToRotation(new Vector3(0, 0, 1), dashDirection) * new Vector3(-5, 0, -2)));
+                //StartCoroutine(dash(transform.position + Quaternion.FromToRotation(new Vector3(0, 0, 1), dashDirection) * new Vector3(-5, 0, -2)));
+                StartCoroutine(dash(transform.position + Quaternion.FromToRotation(new Vector3(0, 0, 1), dashDirection) * new Vector3(-5, 0, 0)));
+
             }
-            Debug.Log("Rail: " + railIndex);
+            Debug.Log(railIndex);
         }
     }
 
@@ -245,11 +229,6 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator slide()
     {
         isSliding = true;
-        int random = Random.Range(0, 10);
-        if (random >= 8)
-            anim.SetTrigger("isRolling");
-        else
-            anim.SetTrigger("isSliding");
         slideCooldown = true;
         for (int x = 10; x > 0; x--)
         {
