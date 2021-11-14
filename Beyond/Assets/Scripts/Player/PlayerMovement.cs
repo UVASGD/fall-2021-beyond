@@ -166,9 +166,6 @@ public class PlayerMovement : MonoBehaviour
 
         /* Dash */
 
-        
-        //Debug.Log(waypointIndex);
-
         //Dashes LEFT or RIGHT to change rails
         if (Input.GetKeyDown(KeyCode.A) && !isDashing && !isSliding && isGrounded)
         {
@@ -183,7 +180,6 @@ public class PlayerMovement : MonoBehaviour
                 StartCoroutine(dash(transform.position + Quaternion.FromToRotation(new Vector3(0, 0, 1), dashDirection) * new Vector3(5, 0, 0)));
 
             }
-            Debug.Log(railIndex);
         }
         else if (Input.GetKeyDown(KeyCode.D) && !isDashing && !isSliding && isGrounded)
         {
@@ -198,7 +194,6 @@ public class PlayerMovement : MonoBehaviour
                 StartCoroutine(dash(transform.position + Quaternion.FromToRotation(new Vector3(0, 0, 1), dashDirection) * new Vector3(-5, 0, 0)));
 
             }
-            Debug.Log(railIndex);
         }
     }
 

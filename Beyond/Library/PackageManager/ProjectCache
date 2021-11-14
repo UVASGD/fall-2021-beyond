@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637722022780000000
-    m_Hash: 2864027886
+      ticks: 637725241400000000
+    m_Hash: 922661641
   m_LockFileStatus:
     m_FilePath: /Users/ericweng/Unity/fall-2021-beyond/Beyond/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637722022780000000
-    m_Hash: 3950329608
+      ticks: 637725241400000000
+    m_Hash: 3967960000
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -64,8 +64,8 @@ m_PackageAssets:
       - interface
       - mind
       registry:
-        id: scoped:NextMind
-        name: NextMind
+        id: scoped:NextMind SDK
+        name: NextMind SDK
         url: https://registry.npmjs.com
         scopes:
         - com.nextmind.unitysdk
@@ -84,12 +84,12 @@ m_PackageAssets:
         url: 
         revision: 
         path: 
-    - packageId: com.unity.ide.visualstudio@2.0.11
+    - packageId: com.unity.ide.visualstudio@2.0.12
       testable: 0
       isDirectDependency: 1
-      version: 2.0.11
+      version: 2.0.12
       source: 1
-      resolvedPath: /Users/ericweng/Unity/fall-2021-beyond/Beyond/Library/PackageCache/com.unity.ide.visualstudio@2.0.11
+      resolvedPath: /Users/ericweng/Unity/fall-2021-beyond/Beyond/Library/PackageCache/com.unity.ide.visualstudio@2.0.12
       assetPath: Packages/com.unity.ide.visualstudio
       name: com.unity.ide.visualstudio
       displayName: Visual Studio Editor
@@ -165,13 +165,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637613656180000000
+      datePublishedTicks: 637720564750000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.visualstudio.git
-        revision: 680e06d94ffca728223ae2cb14bb919cd354e2c1
+        revision: 8d436ff053b9c59677b5e9799208143553cd02d9
         path: 
     - packageId: com.unity.test-framework@1.1.30
       testable: 0

@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.nextmind.unitysdk": "1.5.0",
-    "com.unity.ide.visualstudio": "2.0.11",
+    "com.unity.ide.visualstudio": "2.0.12",
     "com.unity.test-framework": "1.1.30",
     "com.unity.timeline": "1.4.8",
     "com.unity.ugui": "1.0.0",
@@ -39,7 +39,7 @@
   },
   "scopedRegistries": [
     {
-      "name": "NextMind",
+      "name": "NextMind SDK",
       "url": "https://registry.npmjs.com",
       "scopes": [
         "com.nextmind.unitysdk"
