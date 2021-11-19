@@ -16,13 +16,12 @@ public class PlayerMovement : MonoBehaviour
      * should contain all points in order from start to finish.
      */
     [SerializeField] private List<Transform> rails = new List<Transform>();
-    private int railIndex;
-    private int waypointIndex = 0; // Which point along the rail we are pathing to
+    private int railIdx;
+    private int waypointIdx = 0; // Which point along the rail we are pathing to
 
     // Movement Parameters
-    [SerializeField] private float dashTime = 0.05f; // issue: dash seems slow
+    [SerializeField] private float dashTime = 0.05f;
     [SerializeField] private float runSpeed = 10.0f;
-    [SerializeField] private float slowSpeed = 5f;
     [SerializeField] private float slideSpeedInc = 20f;
 
     // Jump Parameeters
@@ -44,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        railIndex = rails.Count / 2; // select the middle rail
+        railIdx = rails.Count / 2; // select the middle rail
         rb = GetComponent<Rigidbody>();
         currSpeed = runSpeed;
     }
@@ -101,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
         /* Move Along Rail */
 
         //Chooses the rail to go towards as nextPoint
-        Vector3 nextPoint = rails[railIndex].GetChild(waypointIndex).position;
+        Vector3 nextPoint = rails[railIdx].GetChild(waypointIdx).position;
                 
         //Sets y the same as transform as y does not matter
         nextPoint.y = transform.position.y;
@@ -131,7 +130,7 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 hitsWall = false;
-                //transform.position = Vector3.MoveTowards(pos, pointAdj, step);
+                transform.position = Vector3.MoveTowards(pos, nextPoint, step);
             }
         }
         else
@@ -144,19 +143,21 @@ public class PlayerMovement : MonoBehaviour
         // Then sets next point to go to
         if (Vector3.Distance(pos, nextPoint) < 1f)
         {
-            if (++waypointIndex >= rails[railIndex].childCount)
-                waypointIndex--;
+            if (++waypointIdx >= rails[railIdx].childCount)
+                waypointIdx--;
         }
 
         /* Slide */
 
-        if (Input.GetKey(KeyCode.LeftShift) && !isSliding)
+        if (Input.GetKey(KeyCode.LeftShift)/* && !isSliding*/)
         {
-            currSpeed = slowSpeed;
+            //currSpeed = slowSpeed;
+            Time.timeScale = 0.2f;
         }
-        else if (!isSliding)
+        else if (true /*&& !isSliding*/)
         {
-            currSpeed = runSpeed;
+            //currSpeed = runSpeed;
+            Time.timeScale = 1f;
         }
 
         if (Input.GetKeyDown(KeyCode.LeftControl) && !slideCooldown && isGrounded)
@@ -169,28 +170,26 @@ public class PlayerMovement : MonoBehaviour
         //Dashes LEFT or RIGHT to change rails
         if (Input.GetKeyDown(KeyCode.A) && !isDashing && !isSliding && isGrounded)
         {
-            if (--railIndex < 0) // we are already at left edge
+            if (--railIdx < 0) // we are already at left edge
             {
-                railIndex = 0;                
+                railIdx = 0;                
             }
             else
             {
                 StartCoroutine(dashWait());
-                //StartCoroutine(dash(transform.position + Quaternion.FromToRotation(new Vector3(0, 0, 1), dashDirection) * new Vector3(5, 0, -2)));
                 StartCoroutine(dash(transform.position + Quaternion.FromToRotation(new Vector3(0, 0, 1), dashDirection) * new Vector3(5, 0, 0)));
 
             }
         }
         else if (Input.GetKeyDown(KeyCode.D) && !isDashing && !isSliding && isGrounded)
         {
-            if (++railIndex >= rails.Count) // we are already at right edge
+            if (++railIdx >= rails.Count) // we are already at right edge
             {
-                railIndex = rails.Count - 1;                
+                railIdx = rails.Count - 1;                
             }
             else
             {
                 StartCoroutine(dashWait());
-                //StartCoroutine(dash(transform.position + Quaternion.FromToRotation(new Vector3(0, 0, 1), dashDirection) * new Vector3(-5, 0, -2)));
                 StartCoroutine(dash(transform.position + Quaternion.FromToRotation(new Vector3(0, 0, 1), dashDirection) * new Vector3(-5, 0, 0)));
 
             }
@@ -239,7 +238,7 @@ public class PlayerMovement : MonoBehaviour
             yield return new WaitForSeconds(0.001f);
         }
         transform.localScale = new Vector3(1, 2, 1);
-        currSpeed -= slideSpeedInc;
+        currSpeed = runSpeed;
         isSliding = false;
         yield return new WaitForSeconds(0.1f);
         slideCooldown = false;
