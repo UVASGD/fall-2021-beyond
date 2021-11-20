@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637725241400000000
+      ticks: 637729691350000000
     m_Hash: 922661641
   m_LockFileStatus:
     m_FilePath: /Users/ericweng/Unity/fall-2021-beyond/Beyond/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637725241400000000
+      ticks: 637729691350000000
     m_Hash: 3967960000
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}

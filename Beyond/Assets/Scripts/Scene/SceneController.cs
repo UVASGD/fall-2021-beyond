@@ -7,15 +7,21 @@ using UnityEngine;
  */
 public class SceneController : MonoBehaviour
 {
+    /* Other Scripts */
     [SerializeField] private PlayerMovement playerScript;
-
     private UIController uiController;
+    private Timer timer; // timer for the game
     public SceneState state { get; private set; }
+
+    /* Level Sections */
+    [SerializeField] private List<GameObject> sections = new List<GameObject>(); //The floor for each section
+    private int sectionIdx = 0; // What section the player is on
 
     private void Start()
     {
         state = SceneState.LOADING;
         uiController = GetComponent<UIController>();
+        timer = GetComponent<Timer>();
         playerScript.enabled = false; // breaks player jumping unless slide is activated
     }
 
@@ -25,20 +31,18 @@ public class SceneController : MonoBehaviour
         {
             state = SceneState.GAMEOVER;
         }
-        
+
         switch (state)
         {
             case SceneState.LOADING:
                 if (Input.GetKeyDown(KeyCode.Space)) // Press space to start
                 {
-                    playerScript.enabled = true;
-                    uiController.StartGame();
-                    state = SceneState.RUNNING;
+                    StartGame();
                 }
                 break;
 
             case SceneState.RUNNING:
-                if (uiController.IsGameOver()) // End Game
+                if (timer.IsReady()) // End Game
                 {
                     EndGame();
                 }
@@ -49,11 +53,25 @@ public class SceneController : MonoBehaviour
         }
     }
 
+    public void StartGame()
+    {
+        timer.SetStarted(true); // Start counting down
+        playerScript.enabled = true;
+        uiController.StartGame();
+        state = SceneState.RUNNING;
+    }
+
+    public void SetNextSection() // Player has passed checkpoint
+    {
+        sections[sectionIdx++].GetComponent<Rigidbody>().isKinematic = false;
+        timer.Reset();
+    }
+
     public void EndGame()
     {
-        playerScript.enabled = false;
         state = SceneState.GAMEOVER;
-        Debug.Log("Ended Game");
+        playerScript.enabled = false;
+        uiController.EndGame();
         GetComponent<ChangeScene>().LoadScene("MenuScene"); // exit to menu
     }
 }

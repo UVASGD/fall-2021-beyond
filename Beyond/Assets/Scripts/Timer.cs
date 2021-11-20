@@ -1,23 +1,29 @@
-﻿/**
- * A general purpose timer that counts down from a set value to 0.
+﻿using UnityEngine;
+
+/**
+ * By Eric Weng
+ * 
+ * A general purpose timer script that counts down from a set value to 0.
  */
-public class Timer
+public class Timer : MonoBehaviour
 {
-    // automatically generates getters/setters
-    public float maxValue { get; private set; }
-    public float value { get; private set; }
-    public bool started { get; set; }
+    [SerializeField] public float maxValue; // how long to count for
+    public float value { get; private set; } // current time
+    private bool started = false; // is counting
 
-    public Timer(float startValue)
+    /* Script Methods */
+
+    private void Start()
     {
-        this.maxValue = startValue;
-        this.value = startValue;
+        value = maxValue;
     }
 
-    public bool IsReady()
+    private void Update()
     {
-        return value <= 0;
+        if (started) value -= Time.deltaTime;
     }
+
+    /* Game Methods */
 
     public void Reset()
     {
@@ -27,6 +33,23 @@ public class Timer
     public void CountDown(float dt)
     {
         value -= dt;
+    }
+
+    /* Field Getters */
+
+    public void SetStarted(bool started)
+    {
+        this.started = started;
+    }
+
+    public bool IsReady()
+    {
+        return value <= 0;
+    }
+
+    public bool IsStarted()
+    {
+        return started;
     }
 }
 

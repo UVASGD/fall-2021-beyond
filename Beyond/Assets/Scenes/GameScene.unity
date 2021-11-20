@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.02
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: b1d86557f64c74d53b8292bcb3150f1a, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: d0c2fb8502412420fa4f24f79269704e, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -708,8 +708,8 @@ Camera:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.66816485, g: 0.70457125, b: 0.7264151, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -770,7 +770,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedH: 2
   speedV: 2
-  yaw: 0
 --- !u!1 &982621882
 GameObject:
   m_ObjectHideFlags: 0
@@ -2820,6 +2819,7 @@ GameObject:
   - component: {fileID: 3926254446612979802}
   - component: {fileID: 3926254446612979805}
   - component: {fileID: 3926254446612979803}
+  - component: {fileID: 3926254446612979804}
   - component: {fileID: 3926254446612979801}
   m_Layer: 0
   m_Name: Scene Control
@@ -2872,10 +2872,19 @@ MonoBehaviour:
   timerSlider: {fileID: 4898556574914019643}
   timerText: {fileID: 4898556573851002684}
   timesUpText: {fileID: 4898556575532337736}
-  gameDuration: 10
-  sections:
-  - {fileID: 4507733822560628234}
-  - {fileID: 3648643765504855631}
+--- !u!114 &3926254446612979804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3926254446612979800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1783d0d3a5502450ba7359cfedf2f685, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxValue: 10
 --- !u!114 &3926254446612979805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2889,6 +2898,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerScript: {fileID: 1028061112}
+  sections:
+  - {fileID: 4507733822560628234}
+  - {fileID: 3648643765504855631}
 --- !u!1 &4174236003252654913
 GameObject:
   m_ObjectHideFlags: 0
@@ -3055,7 +3067,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 10}
-  m_SizeDelta: {x: 160, y: 60}
+  m_SizeDelta: {x: 800, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4898556574053938801
 GameObject:
@@ -3410,7 +3422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4898556574418190617
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3437,7 +3449,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4898556574418190616}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
@@ -4195,7 +4207,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4898556575532337738}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
@@ -4215,13 +4227,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 200
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Out of Time!
 --- !u!222 &4898556575532337737
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4264,8 +4276,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 96, y: -167}
-  m_SizeDelta: {x: 1000, y: 1000}
+  m_AnchoredPosition: {x: 10, y: -30}
+  m_SizeDelta: {x: 1200, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4898556575637722137
 GameObject:

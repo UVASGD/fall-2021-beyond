@@ -8,7 +8,7 @@ public class SectionTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GameObject.Find("Scene Control").GetComponent<UIController>().SetNextSection();
+            GameObject.Find("Scene Control").GetComponent<SceneController>().SetNextSection();
             gameObject.SetActive(false);
         }
     }

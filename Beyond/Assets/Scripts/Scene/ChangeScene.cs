@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
  */
 public class ChangeScene : MonoBehaviour
 {
-    [SerializeField] private Animator optionalTransition = null; // optional
+    [SerializeField] private Animator optionalTransition = null;
 
     public void LoadScene(string sceneName)
     {
@@ -18,7 +18,6 @@ public class ChangeScene : MonoBehaviour
     {
         if (optionalTransition != null)
         {
-            Debug.Log("Transitioning");
             optionalTransition.SetTrigger("GameOver");
             yield return new WaitForSeconds(2);
         }
