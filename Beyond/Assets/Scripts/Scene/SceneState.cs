@@ -1,7 +1,4 @@
-﻿/**
- * By Eric Weng
- */
-public enum SceneState
+﻿public enum SceneState
 {
     LOADING, // game not yet started
     RUNNING, // playing the game

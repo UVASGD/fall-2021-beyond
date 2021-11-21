@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/**
- * By Eric Weng
- */
+/// <summary>
+/// The overall manager script for the entire scene.
+/// </summary>
 public class SceneController : MonoBehaviour
 {
     /* Other Scripts */

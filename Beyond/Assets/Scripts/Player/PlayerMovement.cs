@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/**
- * By AJ Nye and Eric Weng
- * TODO separate into player manager and sub scripts
- */
-public class PlayerMovement : MonoBehaviour
+/// <summary>
+/// The controller script for the player.
+/// </summary>
+public class PlayerMovement : MonoBehaviour // TODO separate into player manager and sub scripts
 {
     private Rigidbody rb;
 

@@ -2,9 +2,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-/**
- * By Ryan Grayson and Eric Weng
- */
 public class ChangeScene : MonoBehaviour
 {
     [SerializeField] private Animator optionalTransition = null;
@@ -18,8 +15,8 @@ public class ChangeScene : MonoBehaviour
     {
         if (optionalTransition != null)
         {
+            yield return new WaitForSeconds(3);
             optionalTransition.SetTrigger("GameOver");
-            yield return new WaitForSeconds(2);
         }
         SceneManager.LoadScene(sceneName);
     }

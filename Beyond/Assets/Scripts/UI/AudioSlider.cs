@@ -4,9 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 
-/*
- * By Ryan Grayson
- */
 [RequireComponent(typeof (Slider))]
 public class AudioSlider : MonoBehaviour
 {

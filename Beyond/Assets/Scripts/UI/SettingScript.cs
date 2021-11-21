@@ -1,9 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-/**
- * By Ryan Grayson
- */
 public class SettingScript : MonoBehaviour
 {
     public Button playsettingsButton;
