@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,12 +12,12 @@ public class CrosshairRaycast : MonoBehaviour
     [SerializeField] private float range = 20;
     private Image image;
 
-    void Start()
+    private void Start()
     {
         image = GetComponent<Image>();
     }
 
-    void Update()
+    private void Update()
     {
         if (image.enabled)
         {

@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: 
-    guid: bdaf2b255c6f64bc1bc99fe93419e068
-  - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 8b65a32967647405e9273f3be7da6168
+  - enabled: 1
+    path: Assets/Scenes/MenuScene.unity
+    guid: 0830714d473fb44b2bc5bccf3975417f
   - enabled: 1
     path: Assets/NextMind SDK Samples/Hub_VR.unity
     guid: 282181e38ebf2d64e98ded67e2c52942

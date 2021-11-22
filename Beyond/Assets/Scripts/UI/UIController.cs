@@ -45,7 +45,7 @@ public class UIController : MonoBehaviour
     private void Start()
     {
         timer = GetComponent<Timer>();
-        ResetGame();
+        SetUpGame();
     }
 
     private void Update()
@@ -80,7 +80,7 @@ public class UIController : MonoBehaviour
         }
     }
 
-    public void ResetGame() // set up the level
+    public void SetUpGame()
     {
         // Set UI Visibility
         titleImage.enabled = true;
@@ -88,7 +88,7 @@ public class UIController : MonoBehaviour
         gameOverText.enabled = false;
 
         // Initialize Timer
-        timerSlider.gameObject.SetActive(false);
+        timerSlider.gameObject.SetActive(true);
         timerSlider.maxValue = timer.maxValue;
         timerSlider.value = timerSlider.maxValue;
         timerText.text = "Press space to start";
@@ -117,7 +117,6 @@ public class UIController : MonoBehaviour
         gameOverText.enabled = true;
         timerText.enabled = false;
         timerSlider.gameObject.SetActive(true);
-        powerSlider.gameObject.SetActive(true);
     }
 
 }
