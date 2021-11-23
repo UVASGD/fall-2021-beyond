@@ -30,6 +30,8 @@ public class UIController : MonoBehaviour
     [SerializeField] private Sprite powerBarActive;
     [SerializeField] private float powerBarDuration = 5f; /// how long for power up bar to fill up
 
+    [SerializeField] private ThrowBrick throwBrickScript;
+
     private Vector3 scaleChange = new Vector3(1.8f, 1f, 1f);
     private Vector3 positionChange = new Vector3(430f, 0f, -430f);
 
@@ -60,14 +62,20 @@ public class UIController : MonoBehaviour
             timerText.text = timeStr;
             timerSlider.value = timer.value;
 
-            // Fill up power bar
+            // Activate power-up mode
             if (Input.GetKey(KeyCode.LeftShift))
             {
+                // TODO Create script for power up mode
                 glass.SetActive(true);
                 powerSlider.transform.localScale = scaleChange;
                 powerFill.sprite = powerBarActive;
                 powerSlider.value -= Time.deltaTime;
                 crosshair.SetVisible(true);
+
+                if (Input.GetKeyDown(KeyCode.Mouse0) && crosshair.IsOnTarget())
+                {
+                    throwBrickScript.Throw();
+                }
             }
             else if (!powerBarFull && !(Input.GetKey(KeyCode.LeftShift)))
             {

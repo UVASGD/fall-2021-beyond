@@ -31,7 +31,6 @@ public class ShakeSlider : MonoBehaviour
         }
         float angle = Random.Range(0, 360);
         SetPosition(startPos + intensity * (Quaternion.Euler(0, 0, angle) * Vector3.up));
-        Debug.Log("set position");
     }
 
     private void SetPosition(Vector3 pos)

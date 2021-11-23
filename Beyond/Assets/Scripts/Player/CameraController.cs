@@ -10,8 +10,6 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-
         yaw += speedH * Input.GetAxis("Mouse X");
         pitch -= speedV * Input.GetAxis("Mouse Y");
         // Clamp pitch so we don't get weird angles

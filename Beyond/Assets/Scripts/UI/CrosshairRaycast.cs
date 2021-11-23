@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,9 +9,12 @@ public class CrosshairRaycast : MonoBehaviour
 {
     [SerializeField] private Sprite crosshairInactive;
     [SerializeField] private Sprite crosshairActive;
-    [SerializeField] private Transform raycastSource;
-    [SerializeField] private float range = 20;
+    [SerializeField] private Transform playerXf;
+    private float range = 40;
+
+    private Vector3 boxSize = new Vector3(1, 10, 1);
     private Image image;
+    private bool onTarget;
 
     private void Start()
     {
@@ -21,15 +25,26 @@ public class CrosshairRaycast : MonoBehaviour
     {
         if (image.enabled)
         {
-            if (Physics.Raycast(raycastSource.position, raycastSource.forward, out RaycastHit hit))
+            //if (Physics.BoxCast(playerXf.position, boxSize, playerXf.forward, out RaycastHit hit))
+            if (Physics.Raycast(playerXf.position, playerXf.forward, out RaycastHit hit) && hit.distance <= range)
             {
-                image.sprite = (hit.distance <= range) ? crosshairActive : crosshairInactive;
+                onTarget = true;
             }
+            else
+            {
+                onTarget = false;
+            }
+            image.sprite = onTarget ? crosshairActive : crosshairInactive;
         }
     }
 
     public void SetVisible(bool enabled)
     {
         image.enabled = enabled;
+    }
+
+    public bool IsOnTarget()
+    {
+        return onTarget;
     }
 }
