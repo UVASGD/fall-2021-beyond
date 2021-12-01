@@ -18,6 +18,7 @@ public class ChangeScene : MonoBehaviour
             yield return new WaitForSeconds(3);
             optionalTransition.SetTrigger("GameOver");
         }
+        Death.death = false;
         SceneManager.LoadScene(sceneName);
     }
 }
